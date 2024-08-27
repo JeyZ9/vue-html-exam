@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lazady</title>
+  <!-- cdn -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<div id="app">
+    <div class="grid grid-cols-4 w-[100vw] h-[100vh] items-center">
+        <div class="p-10" v-for="product in stock">
+            <div>
+                <div class="flex flex-col items-start justify-between w-[20vw] h-[60vh] gap-y-2">
+                    <div class="flex justify-center h-[35vh] w-full">
+                        <img :src="product.mainImage" class="h-[35vh] w-auto">
+                    </div>
+                    <div class="flex justify-center items-center gap-x-2 relative w-[20vw]">
+                        <div class="" v-for="item in product.subImage">
+                            <img :src="item" class="h-10">
+                        </div>
+                        <div class="text-[#808080] absolute right-0">
+                            <i class="bi bi-chevron-right text-2xl"></i>
+                        </div>
+                    </div>
+                    <div class="flex flex-col w-full">
+                        <div class="slex flex-col justify-between items-start">
+                            <h2 class="font-semibold text-md">{{ product.productName }}</h2>
+                            <h1 class="text-lg font-semibold text-orange-500">฿{{ product.price.toFixed(2) }}</h1>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div class="flex justify-center items-center">
+                                <h3 class="text-sm font-semibold">{{ product.unitStock }} ชิ้น</h3>
+                                <p class="text-center text-gray-400">&nbsp;|&nbsp;</p>
+                                <div class="" v-for="i in 5">
+                                    <p ><i class="bi bi-star-fill text-yellow-400"></i></p>
+                                </div>
+                                <p class="text-xs text-[#808080]">({{ product.unitReview }})</p>
+                            </div>
+                            <p class="text-xs text-[#808080]">กรุงเทพมหานคร</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+
+<script>
+
+    const stock = [
+        {
+            mainImage: "./image/product1.png",
+            subImage: ["./image/product1.png", "./image/product1.png", "./image/product1.png", "./image/product1.png", "./image/product1.png"],
+            productName: "กระโปรงนักศึกษาทรงเอยาว 16-18",
+            price: 99,
+            unitStock: "1.1k",
+            position: "กรุงเทพมหานคร",
+            unitReview: 353
+        },
+        {
+            mainImage: "./image/product2.png",
+            subImage: ["./image/product2.png", "./image/product2.png", "./image/product2.png", "./image/product2.png", "./image/product2.png"],
+            productName: "กระโปรงนักศึกษา ทรงเอผ่าหน้า ผ้าฮานาโกะ ความยาว 14 - 16 - 18 เอว 23 - 24...",
+            price: 100,
+            unitStock: "143",
+            position: "กรุงเทพมหานคร",
+            unitReview: 31
+        },
+        {
+            mainImage: "./image/product3.png",
+            subImage: ["./image/product3.png", "./image/product3.png", "./image/product3.png", "./image/product3.png", "./image/product3.png"],
+            productName: "กระโปรงนักศึกษาทรงเอยาว 20 22 24",
+            price: 129,
+            unitStock: "435",
+            position: "กรุงเทพมหานคร",
+            unitReview: 174
+        },
+        {
+            mainImage: "./image/product4.png",
+            subImage: ["./image/product4.png", "./image/product4.png", "./image/product4.png", "./image/product4.png", "./image/product4.png"],
+            productName: "กระโปรงนักศึกษาทรงเอ (ผ่าหลัง)",
+            price: 99,
+            unitStock: 932,
+            position: "ปทุมธานี",
+            unitReview: 445
+        }
+    ]
+
+  const app = Vue.createApp({
+   data() {
+    return {
+        message: "test",
+        stock: stock
+    }
+   }
+  })
+  
+  app.mount('#app')
+
+</script>
+</body>
+</html>
